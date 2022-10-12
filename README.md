@@ -1,2 +1,2 @@
-# teacher-tools
-a simple tool for teachers to randomly pick students for whatver purpose.
+# Teacher-tools
+A simple tool for teachers to randomly pick students for whatver purpose.
