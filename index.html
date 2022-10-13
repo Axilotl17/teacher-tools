@@ -35,16 +35,19 @@
             <p id="pickResult"></p>
         </div>
         <div id="group">
-            <button onclick="generateGroups()">generate!</button><br><br>
-            students/group <input id="students/group" type="number"><br>
-            # of groups <input id ="#groupsToggle" type="checkbox" onchange="groupsToggle()"> <input id="#groups" type="number"><br>
-            TA <input id ="TAInput" type="checkbox"><hr>
+            <div id="control">
+                <button onclick="generateGroups()">generate!</button><br><br>
+                students/group <input id="students/group" type="number"><br>
+                # of groups <input id ="#groupsToggle" type="checkbox" onchange="groupsToggle()"> <input id="#groups" type="number"><br>
+                TA <input id ="TAInput" type="checkbox"><hr>
+            </div>
+            <div id="output">
+                <p id="result"></p>
+                <button id="back" onclick="location.reload()">back</button>
+            </div>
         </div>
         <div id="students"></div>
-        <div id="output">
-            <p id="result"></p>
-            <button id="back" onclick="location.reload()">back</button>
-        </div>
+
     </body>
     <script>
         const periods = document.getElementById("periods")
@@ -197,7 +200,7 @@
                 }
             }
             output.style.display = "block"
-            group.style.display = "none"
+            document.getElementById("control").style.display = "none"
             students.style.display = "none"
 
             
