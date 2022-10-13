@@ -10,15 +10,22 @@
         </style>
     </head>
     <body>
-        <div id="main">
-            Period:
-            <select id="periods"></select>&nbsp&nbsp&nbsp   
-            <button id="editClass" onclick="editClass()">edit class</button>&nbsp&nbsp&nbsp
-            Action: <select id="action">
-                <option value="pick">pick</option>
-                <option value="group">group</option>
-            </select>
-            <hr>
+        <div name="main">
+            <div id="head">
+                Period:
+                <select id="periods"></select>&nbsp&nbsp&nbsp   
+                <button id="editClass" onclick="editClass()">edit class</button>&nbsp&nbsp&nbsp
+                Action: <select id="action">
+                    <option value="pick">pick</option>
+                    <option value="group">group</option>
+                </select>
+                <hr>
+            </div>
+            <div id="create">
+                <textarea type="text" id="studentInput"></textarea><br>
+                <button id="studentInputSave" onclick="studentInputSave()">save</button>
+                <button id="studentInputCancel" onclick="studentInputLeave()">cancel</button>
+            </div>
         </div>
         <div id="pick">
             <button onclick="generatePick()">pick students</button><br><br>
@@ -34,11 +41,6 @@
             TA <input id ="TAInput" type="checkbox"><hr>
         </div>
         <div id="students"></div>
-        <div id="create">
-            <textarea type="text" id="studentInput"></textarea><br>
-            <button id="studentInputSave" onclick="studentInputSave()">save</button>
-            <button id="studentInputCancel" onclick="studentInputLeave()">cancel</button>
-        </div>
         <div id="output">
             <p id="result"></p>
             <button id="back" onclick="location.reload()">back</button>
@@ -81,45 +83,11 @@
                 }
                 return returnFunc
             }
-/*
-        studentPick = []
-        studentList.forEach(element => {
-            index = studentPick.length
-            studentPick.push(document.createElement("p"))
-            studentPick[index].innerHTML = element
-            studentPick[index].className = "student"
-            studentPick[index].style.color = "black"
-            studentPick[index].onclick = makeOnclick();
-            /*
-            studentPick[index].onclick = function(i){
-                return function(){
-                    toggle(i)
-                }
-            }(studentPick[index])
-            *
-        })
-*/
-        
+
         function updateList(){   
             period = periods.value
             document.getElementById("students").innerHTML = ""
             elementList = []   
-            /*   
-            studentList = JSON.parse(localStorage.getItem(period))
-            studentList.forEach((element, index) => {
-                if(element == ""){
-                    studentList.splice(index, 1)
-                }
-            })
-            studentList.forEach((element, index) => {
-                elementList.push(document.createElement("p"))
-                elementList[index].innerHTML = element
-                elementList[index].className = "student"
-                elementList[index].style.color = "black"
-                elementList[index].disabled = false
-                elementList[index].onclick = makeOnclick(elementList[index])
-                })
-            */
             index = 0
             JSON.parse(localStorage.getItem(period)).forEach(element => {
                 if(element != ""){
@@ -154,6 +122,7 @@
             studentInput.value = JSON.parse(localStorage.getItem(period)).join("\n")
             students.style.display = "none"
             group.style.display = "none"
+            pick.style.display = "none"
             create.style.display = "block"
         }
         function studentInputSave(){
@@ -165,7 +134,7 @@
             create.style.display = "none"       
             document.getElementById("editClass").disabled = false
             periods.disabled = false
-            group.style.display = "block"
+            actionSet()
             students.style.display = "block"
             updateList()
         }
