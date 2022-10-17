@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <base href=".">
         <title>pairing</title>
         <style>
             p.student {
@@ -14,15 +15,15 @@
             <div id="head">
                 Period:
                 <select id="periods"></select>&nbsp&nbsp&nbsp   
-                <button id="editClass" onclick="editClass()">edit class</button>&nbsp&nbsp&nbsp
+                <button id="editClass">edit class</button>&nbsp&nbsp&nbsp
                 Tool: <select id="tool">
                 </select>
                 <hr>
             </div>
             <div id="create">
                 <textarea type="text" id="studentInput"></textarea><br>
-                <button id="studentInputSave" onclick="studentInputSave()">save</button>
-                <button id="studentInputCancel" onclick="studentInputLeave()">cancel</button>
+                <button id="studentInputSave">save</button>
+                <button id="studentInputCancel">cancel</button>
             </div>
         </div>
         <div id="pick">
